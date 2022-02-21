@@ -54,4 +54,4 @@ The instruction cycle is done in 2 steps (2 steps per instruction):
   - input file <= 150 lines of code
 
 ## Appendixes
-[a relative link](HW1InstructionsSpring2022_Almalki.pdf)
+[Appendexes](HW1InstructionsSpring2022_Almalki.pdf)
