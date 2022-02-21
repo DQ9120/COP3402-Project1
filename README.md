@@ -39,4 +39,15 @@ The Instruction Set Architecture of the P-machine is as follows:
 The instruction cycle is done in 2 steps (2 steps per instruction):
   - Fetch Cycle:   instruction from PC is fetched from "text" segment, placed in IR
   - Execute Cycle: instruction in IR is executed using data + register stacks
+  
  ![image](https://user-images.githubusercontent.com/63477278/155031454-17757586-3792-4856-9dd1-c228490e314f.png)
+
+## Starting Values
+  - BP = MAX_STACK_LENGTH - 1               (BP: points to base of curr AR)
+  - SP = BP + 1                             (SP: points to top entry of stack)
+  - PC = 0                                  (PC: points to next instruction)
+  - IR                                      (IR: holds curr instruction, array or struct)
+  - Initial stack + reg file values = 0
+  - REG_FILE_SIZE = 10
+  - MAX_STACK_LENGTH = 100
+  - input file <= 150 lines of code
