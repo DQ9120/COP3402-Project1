@@ -52,3 +52,6 @@ The instruction cycle is done in 2 steps (2 steps per instruction):
   - REG_FILE_SIZE = 10
   - MAX_STACK_LENGTH = 100
   - input file <= 150 lines of code
+
+## Appendixes
+[a relative link](HW1InstructionsSpring2022_Almalki.pdf)
