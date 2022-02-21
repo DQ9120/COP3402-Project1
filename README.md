@@ -8,6 +8,14 @@
 In this assignment we'll be implementing a virtual machine called the P-machine. \
 vm.c is our skeleton file that we will be starting with
 
+We will be implementing the function "execute". It receives instructions from the compiler \
+in the form of an instruction struct. We must then load the instructions into the stack \
+prior to execution. We'll print out each line of execution as we move through the instructions, \
+using the "0v" compiler directive. execute is passed a flag to indicate if the directive has been used.
+Print statements for read/write instructions should be printed regardless of directives.
+
+# P-Machine
+## Structure
 The P-machine has two memory areas:
   - Stack: stores variables and grows downwards
   - Text:  stores instructions for VM to execute
@@ -27,3 +35,8 @@ The Instruction Set Architecture of the P-machine is as follows:
       * A number          (instructions: LIT, INC)
       * A program address (instructions: JMP, JPC, CAL)
       * A data address    (instructions: LOD, STO)
+## Cycles
+The instruction cycle is done in 2 steps (2 steps per instruction):
+  - Fetch Cycle:   instruction from PC is fetched from "text" segment, placed in IR
+  - Execute Cycle: instruction in IR is executed using data + register stacks
+ ![image](https://user-images.githubusercontent.com/63477278/155031454-17757586-3792-4856-9dd1-c228490e314f.png)
