@@ -53,5 +53,9 @@ The instruction cycle is done in 2 steps (2 steps per instruction):
   - MAX_STACK_LENGTH = 100
   - input file <= 150 lines of code
 
+## Error Handling
+- Stack Overflow Error: when SP < 0, check for in INC
+- Out of Bounds Access Error: when LOD or STO instruction accesses value < 0  or >= MAX_STACK_LENGTH
+
 ## Appendixes
 [Appendexes](HW1InstructionsSpring2022_Almalki.pdf)
