@@ -1,8 +1,8 @@
 # COP3402-Project1
-## COP3402 Systems Software Project 1 with:
-###  - David Qualls
-###  - Jenna Bush
-###  - Kyle Mauter
+## COP3402 Systems Software Project 1 with
+## David Qualls, Jenna Busch, and Kyle Mauter
+
+======================================================================================
 
 In this assignment we'll be implementing a virtual machine called the P-machine. 
 
