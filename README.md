@@ -23,6 +23,4 @@ The Instruction Set Architecture of the P-machine is as follows:
   - R: register, specifies which register the operation should output in or store from
   - L: lexicographical level
   - M: depends on the operator it indicates
-  + A number (instructions: LIT, INC)
-  + A program address (instructions: JMP, JPC, CAL)
-  + A data address (instructions: LOD, STO)
+      * A number (instructions: LIT, INC)
