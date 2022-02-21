@@ -2,8 +2,9 @@
 ## COP3402 Systems Software Project 1 with
 ## David Qualls, Jenna Busch, and Kyle Mauter
 
-======================================================================================
+==============================================
 
+# Assignment Instructions
 In this assignment we'll be implementing a virtual machine called the P-machine. 
 
 The P-machine has two memory areas:
