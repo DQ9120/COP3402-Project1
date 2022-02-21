@@ -6,6 +6,7 @@
 
 # Assignment Instructions
 In this assignment we'll be implementing a virtual machine called the P-machine. 
+vm.c is our skeleton file that we will be starting with
 
 The P-machine has two memory areas:
   - Stack: stores variables and grows downwards
