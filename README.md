@@ -6,7 +6,7 @@
 
 # Assignment Instructions
 In this assignment we'll be implementing a virtual machine called the P-machine. \
-vm.c is our skeleton file that we will be starting with
+vm.c is our skeleton file that we will be starting with \
 names should be in header comment of each source file, in readme, and comments of submission
 
 We will be implementing the function "execute". It receives instructions from the compiler \
