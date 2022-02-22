@@ -11,6 +11,17 @@
 #define REG_FILE_SIZE 10
 #define MAX_STACK_LENGTH 100
 
+/* From the header file
+
+	typedef struct instruction {
+		int opcode;
+		int r;
+		int l;
+		int m;
+	} instruction;
+
+*/
+
 void print_execution(int line, char *opname, instruction IR, int PC, int BP, int SP, int *stack, int *RF)
 {
 	int i;
@@ -43,6 +54,12 @@ int base(int L, int BP, int *stack)
 
 void execute_program(instruction *code, int printFlag)
 {
+	int BP = MAX_STACK_LENGTH - 1;
+	int SP = BP + 1;
+	int PC = 0;
+	instruction * IR;
+	int * stack = calloc(0, sizeof(int));
+	int * RF = calloc(REG_FILE_SIZE, sizeof(int));
 	// keep this
 	if (printFlag)
 	{
