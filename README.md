@@ -7,12 +7,12 @@
 # Assignment Instructions
 In this assignment we'll be implementing a virtual machine called the P-machine. \
 vm.c is our skeleton file that we will be starting with \
-names should be in header comment of each source file, in readme, and comments of submission
+Names should be in header comment of each source file, in readme, and comments of submission
 
 We will be implementing the function "execute". It receives instructions from the compiler \
 in the form of an instruction struct. We must then load the instructions into the stack \
 prior to execution. We'll print out each line of execution as we move through the instructions, \
-using the "-v" compiler directive. execute is passed a flag to indicate if the directive has been used.
+using the "-v" compiler directive. execute is passed a flag to indicate if the directive has been used. \
 Print statements for read/write instructions should be printed regardless of directives.
 
 # P-Machine
