@@ -54,12 +54,51 @@ int base(int L, int BP, int *stack)
 
 void execute_program(instruction *code, int printFlag)
 {
+	/// Iniitial values
 	int BP = MAX_STACK_LENGTH - 1;
 	int SP = BP + 1;
 	int PC = 0;
-	instruction * IR;
+	instruction IR;
 	int * stack = calloc(0, sizeof(int));
 	int * RF = calloc(REG_FILE_SIZE, sizeof(int));
+	int halt = 0;
+	
+	/// P-machine instruction cycle
+	while (halt == 0)
+	{
+		/// Fetch Cycle
+		IR = code[PC++];
+		
+		/// Execute Cycle
+		switch (IR.opcode) 
+		{
+			case 0:
+			case 1: 
+			case 2:
+			case 3:
+			case 4:
+			case 5: 
+			case 6:
+			case 7:
+			case 8:
+			case 9: 
+			case 10:
+			case 11:
+			case 12:
+			case 13:
+			case 14:
+			case 15: 
+			case 16:
+			case 17:
+			case 18:
+			case 19: 
+			case 20:
+			case 21:
+			case 22:
+			case 23: 
+		}
+	}
+	
 	// keep this
 	if (printFlag)
 	{
