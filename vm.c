@@ -70,6 +70,7 @@ void execute_program(instruction *code, int printFlag)
 		IR = code[PC++];
 		
 		/// Execute Cycle
+		/// Appendix A of hw instructions indicate 24 different operations
 		switch (IR.opcode) 
 		{
 			case 0:
