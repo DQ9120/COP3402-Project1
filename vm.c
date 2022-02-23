@@ -63,6 +63,9 @@ void execute_program(instruction *code, int printFlag)
 	int * RF = calloc(REG_FILE_SIZE, sizeof(int));
 	int halt = 0;
 	
+	/// Useful info
+	char opnames[23][4] = {"LIT", "RET", "LOD", "STO", "CAL", "INC", "JMP", "JPC", "WRT", "RED", "HAL", "NEG", "ADD", "SUB", "MUL", "DIV", "MOD", "EQL", "NEQ", "LSS", "LEQ", "GTR", "GEQ"};
+	
 	// keep this
 	if (printFlag)
 	{
@@ -83,9 +86,12 @@ void execute_program(instruction *code, int printFlag)
 			/// LIT
 			case 1: 
 				RF[IR.r] = IR.m;
+				PC++;
+				print_execution(PC - 1, opnames[0], IR, PC, BP, SP, stack, RF);
 				
 			/// RET
 			case 2:
+				
 				
 			/// LOD
 			case 3:
@@ -98,6 +104,13 @@ void execute_program(instruction *code, int printFlag)
 				
 			/// INC
 			case 6:
+				stack = realloc(IR.m, sizeof(int));
+				SP -= IR.m;
+				if SP < 0
+				{
+					printf("Virtual Machine Error: Stack Overflow Error\n");
+					halt = 1;
+				}
 				
 			/// JMP
 			case 7:
