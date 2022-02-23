@@ -63,8 +63,15 @@ void execute_program(instruction *code, int printFlag)
 	int * RF = calloc(REG_FILE_SIZE, sizeof(int));
 	int halt = 0;
 	
+	// keep this
+	if (printFlag)
+	{
+		printf("\t\t\t\t\tPC\tSP\tBP\n");
+		printf("Initial values:\t\t\t\t%d\t%d\t%d\n", PC, SP, BP);
+	}
+	
 	/// P-machine instruction cycle
-	while (halt == 0)
+	while (!halt)
 	{
 		/// Fetch Cycle
 		IR = code[PC++];
@@ -73,37 +80,78 @@ void execute_program(instruction *code, int printFlag)
 		/// Appendix A of hw instructions indicate 24 different operations
 		switch (IR.opcode) 
 		{
-			case 0:
+			/// LIT
 			case 1: 
+				RF[IR.r] = IR.m;
+				
+			/// RET
 			case 2:
+				
+			/// LOD
 			case 3:
+				
+			/// STO
 			case 4:
+				
+			/// CAL
 			case 5: 
+				
+			/// INC
 			case 6:
+				
+			/// JMP
 			case 7:
+				PC = IR.m;
+				
+			/// JPC
 			case 8:
+				
+			/// WRT
 			case 9: 
+				
+			/// RED
 			case 10:
+				
+			/// HAL
 			case 11:
+				halt = 1;
+				
+			/// NEG
 			case 12:
+				
+			/// ADD
 			case 13:
+				
+			/// SUB
 			case 14:
-			case 15: 
+				
+			/// MUL
+			case 15:
+				
+			/// DIV
 			case 16:
+				
+			/// MOD
 			case 17:
+				
+			/// EQL
 			case 18:
+				
+			/// NEQ
 			case 19: 
+				
+			/// LSS
 			case 20:
+				
+			/// LEQ
 			case 21:
+				
+			/// GTR
 			case 22:
+				
+			/// GEQ
 			case 23: 
+				
 		}
-	}
-	
-	// keep this
-	if (printFlag)
-	{
-		printf("\t\t\t\t\tPC\tSP\tBP\n");
-		printf("Initial values:\t\t\t\t%d\t%d\t%d\n", PC, SP, BP);
 	}
 }
