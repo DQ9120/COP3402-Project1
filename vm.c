@@ -81,6 +81,9 @@ void execute_program(instruction *code, int printFlag)
 		
 		/// Execute Cycle
 		/// Appendix A of hw instructions indicates 23 different operations
+		
+		/// There's some stuff going on I don't understand, am gonna stop for now till we all can work on it together
+		
 		switch (IR.opcode) 
 		{
 			/// LIT
@@ -119,9 +122,10 @@ void execute_program(instruction *code, int printFlag)
 				
 			/// JMP
 			case 7:
+				int prevPC = PC;
 				PC = IR.m;
 				if printFlag
-					print_execution(PC - 1, opnames[6], IR, PC, BP, SP, stack, RF);				
+					print_execution(prevPC, opnames[6], IR, PC, BP, SP, stack, RF);		
 			/// JPC
 			case 8:
 				
