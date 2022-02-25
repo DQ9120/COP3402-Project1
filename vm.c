@@ -111,6 +111,7 @@ void execute_program(instruction *code, int printFlag)
 				stack = realloc(IR.m, sizeof(int));
 				SP -= IR.m;
 				PC++;
+				
 				if SP < 0
 				{
 					printf("Virtual Machine Error: Stack Overflow Error\n");
