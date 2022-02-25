@@ -108,7 +108,7 @@ void execute_program(instruction *code, int printFlag)
 				
 			/// INC
 			case 6:
-				stack = realloc(IR.m, sizeof(int));
+				stack = realloc(stack, Ir.m * sizeof(int));
 				SP -= IR.m;
 				PC++;
 				
