@@ -90,7 +90,7 @@ void execute_program(instruction *code, int printFlag)
 			case 1: 
 				RF[IR.r] = IR.m;
 				PC++;
-				if printFlag
+				if (printFlag)
 					print_execution(PC - 1, opnames[0], IR, PC, BP, SP, stack, RF);
 				
 			/// RET
@@ -112,7 +112,7 @@ void execute_program(instruction *code, int printFlag)
 				SP -= IR.m;
 				PC++;
 				
-				if SP < 0
+				if (SP < 0)
 				{
 					printf("Virtual Machine Error: Stack Overflow Error\n");
 					halt = 1;
@@ -125,7 +125,7 @@ void execute_program(instruction *code, int printFlag)
 			case 7:
 				int prevPC = PC;
 				PC = IR.m;
-				if printFlag
+				if (printFlag)
 					print_execution(prevPC, opnames[6], IR, PC, BP, SP, stack, RF);		
 			/// JPC
 			case 8:
@@ -139,7 +139,7 @@ void execute_program(instruction *code, int printFlag)
 			/// HAL
 			case 11:
 				halt = 1;
-				if printFlag
+				if (printFlag)
 					print_execution(PC - 1, opnames[10], IR, PC, BP, SP, stack, RF);
 				
 			/// NEG
