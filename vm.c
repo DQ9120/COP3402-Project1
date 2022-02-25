@@ -1,4 +1,10 @@
 /*
+KYLE MAUTER
+DAVID QUALLS
+JENNA BUSCH
+*/
+
+/*
 	You can use these two print statements for the errors:
 		printf("Virtual Machine Error: Stack Overflow Error\n");
 		printf("Virtual Machine Error: Out of Bounds Access Error\n");
