@@ -118,7 +118,7 @@ void execute_program(instruction *code, int printFlag)
 					halt = 1;
 				}
 				
-				if (printFlag && (!halt || IR.opcode == "HAL"))
+				if (printFlag && (!halt || IR.opcode == 11))
 					print_execution(PC - 1, opnames[5], IR, PC, BP, SP, stack, RF);
 				
 			/// JMP
