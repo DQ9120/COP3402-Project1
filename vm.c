@@ -71,7 +71,7 @@ void execute_program(instruction *code, int printFlag)
 	{
 		printf("\t\t\t\t\tPC\tSP\tBP\n");
 		printf("Initial values:\t\t\t\t%d\t%d\t%d\n", PC, SP, BP);
-    fflush(stdout);
+    		fflush(stdout);
 	}
 
 	/// P-machine instruction cycle
@@ -84,7 +84,6 @@ void execute_program(instruction *code, int printFlag)
 		/// Appendix A of hw instructions indicates 23 different operations
 
 		/// There's some stuff going on I don't understand, am gonna stop for now till we all can work on it together
-    //printf("OPCODE: %d\n", IR.opcode);
 		switch (IR.opcode)
 		{
 			/// LIT
