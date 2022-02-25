@@ -95,73 +95,71 @@ void execute_program(instruction *code, int printFlag)
         
 			/// RET
 			case 2:
-			{
+		      	{
 				int prevPC = PC;
 				SP = BP + 1;
 				PC = stack[SP - 3];
 				BP = stack[SP - 2];
 				if (printFlag)
 					print_execution(prevPC - 1, opnames[2-1], IR, PC, BP, SP, stack, RF);
-        			break;
-      			}
+				break;
+		      	}
 
 			/// LOD
 			case 3:
-      			{
+		        {
 				/// Out of bounds check
 				int base_L = base(IR.l, BP, stack);
 				if (base_L - IR.m < 0 || base_L >= MAX_STACK_LENGTH)
 				{
 					printf("Virtual Machine Error: Out of Bounds Access Error\n");
-				  halt = 1;
-				  break;
+				  	halt = 1;
+				  	break;
 				}
-        
-        			RF[IR.r] = stack[base_L - RF[IR.m]];
-        
+
+				RF[IR.r] = stack[base_L - RF[IR.m]];
+
 				if (printFlag)
 					print_execution(PC - 1, opnames[3 - 1], IR, PC, BP, SP, stack, RF);        
-        
-        			break;
-      			}
+
+				break;
+		        }
         
 			/// STO
 			case 4:
-      			{
+		        {
 				/// Out of bounds check
 				int base_L = base(IR.l, BP, stack);
 				if (base_L - IR.m < 0 || base_L >= MAX_STACK_LENGTH)
 				{
 					printf("Virtual Machine Error: Out of Bounds Access Error\n");
-				  halt = 1;
-				  break;
+				  	halt = 1;
+				  	break;
 				}
-        
-        			stack[base_L - RF[IR.m]] = RF[IR.r];
-        
+
+				stack[base_L - RF[IR.m]] = RF[IR.r];
+
 				if (printFlag)
 					print_execution(PC - 1, opnames[4 - 1], IR, PC, BP, SP, stack, RF);        
-        
-        			break;
-      			}
+
+				break;
+		        }
         
 			/// CAL
 			case 5:
-      			{
-        			int prevPC = PC;
+		      	{
+				int prevPC = PC;
 				stack[SP-1] = base(IR.l, BP, stack);
 				stack[SP-2] = BP;
 				stack[SP-3] = PC;
-        
-        			//printf("%d, %d, %d, %d\n", SP, stack[SP+1], stack[SP+2], stack[SP+3]);
-        
+
 				BP = SP-1;
 				PC = IR.m;
-        
+
 				if (printFlag)
 					print_execution(prevPC - 1, opnames[5 - 1], IR, PC, BP, SP, stack, RF);
-        			break;
-      			}
+				break;
+		      	}
         
 			/// INC
 			case 6:
@@ -184,23 +182,24 @@ void execute_program(instruction *code, int printFlag)
 				if (printFlag)
 					print_execution(prevPC-1, opnames[7 - 1], IR, PC, BP, SP, stack, RF);
         			break;
-      			}
+	      		}
+				
 			/// JPC
 			case 8:
-        			if (RF[IR.r] == 0)
+				if (RF[IR.r] == 0)
 				{
-					int prevPC = PC;
+				  	int prevPC = PC;
 				  	PC = IR.m;
-				  	if (printFlag)
-				  		print_execution(prevPC-1, opnames[8 - 1], IR, PC, BP, SP, stack, RF);
-        			}
-        			else
-        			{
-				  	if (printFlag)
-					  	print_execution(PC - 1, opnames[8 - 1], IR, PC, BP, SP, stack, RF);           
-        			}
-        
-        			break;
+					if (printFlag)
+						print_execution(prevPC-1, opnames[8 - 1], IR, PC, BP, SP, stack, RF);
+				}
+				else
+				{
+					if (printFlag)
+						print_execution(PC - 1, opnames[8 - 1], IR, PC, BP, SP, stack, RF);           
+				}
+
+				break;
         
 			/// WRT
 			case 9:
@@ -241,37 +240,37 @@ void execute_program(instruction *code, int printFlag)
 			/// SUB
 			case 14:
         			RF[IR.r] = RF[IR.l] - RF[IR.m];
-				if (printFlag)
-					print_execution(PC - 1, opnames[14 - 1], IR, PC, BP, SP, stack, RF);
+        			if (printFlag)
+          				print_execution(PC - 1, opnames[14 - 1], IR, PC, BP, SP, stack, RF);
         			break;
         
 			/// MUL
 			case 15:
-        		RF[IR.r] = RF[IR.l] * RF[IR.m];
-        		if (printFlag)
-          			print_execution(PC - 1, opnames[15 - 1], IR, PC, BP, SP, stack, RF);
-        		break;
+				RF[IR.r] = RF[IR.l] * RF[IR.m];
+				if (printFlag)
+				  print_execution(PC - 1, opnames[15 - 1], IR, PC, BP, SP, stack, RF);
+				break;
         
 			/// DIV
 			case 16:
-        			RF[IR.r] = RF[IR.l] / RF[IR.m];
-        			if (printFlag)
-          				print_execution(PC - 1, opnames[16 - 1], IR, PC, BP, SP, stack, RF);
-        			break;
+				RF[IR.r] = RF[IR.l] / RF[IR.m];
+				if (printFlag)
+				  print_execution(PC - 1, opnames[16 - 1], IR, PC, BP, SP, stack, RF);
+				break;
         
 			/// MOD
 			case 17:
-        			RF[IR.r] = RF[IR.l] % RF[IR.m];
-        			if (printFlag)
-          				print_execution(PC - 1, opnames[17 - 1], IR, PC, BP, SP, stack, RF);
-        			break;
+				RF[IR.r] = RF[IR.l] % RF[IR.m];
+				if (printFlag)
+				  print_execution(PC - 1, opnames[17 - 1], IR, PC, BP, SP, stack, RF);
+				break;
         
 			/// EQL
 			case 18:
-        			if (RF[IR.l] != RF[IR.m])
-          				RF[IR.r] = 0;
-        			else
-          				RF[IR.r] = 1;
+				if (RF[IR.l] != RF[IR.m])
+				  RF[IR.r] = 0;
+				else
+				  RF[IR.r] = 1;
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[18 - 1], IR, PC, BP, SP, stack, RF);  
@@ -279,58 +278,59 @@ void execute_program(instruction *code, int printFlag)
         
 			/// NEQ
 			case 19:
-        			if (RF[IR.l] == RF[IR.m])
-          				RF[IR.r] = 0;
-        			else
-          				RF[IR.r] = 1;
+				if (RF[IR.l] == RF[IR.m])
+				  RF[IR.r] = 0;
+				else
+				  RF[IR.r] = 1;
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[19 - 1], IR, PC, BP, SP, stack, RF);   
-        			break;
+				break;
         
 			/// LSS
 			case 20:
-        			if (RF[IR.l] < RF[IR.m])
-          				RF[IR.r] = 1; 
-        			else 
-          				RF[IR.r] = 0; 
+				if (RF[IR.l] < RF[IR.m])
+				  RF[IR.r] = 1; 
+				else 
+				  RF[IR.r] = 0; 
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[20 - 1], IR, PC, BP, SP, stack, RF);  
-        			break;
+				break;
         
 			/// LEQ
 			case 21:
-        			if (RF[IR.l] <= RF[IR.m])
-          				RF[IR.r] = 1; 
-        			else 
-          				RF[IR.r] = 0; 
+				if (RF[IR.l] <= RF[IR.m])
+				  RF[IR.r] = 1; 
+				else 
+				  RF[IR.r] = 0; 
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[21 - 1], IR, PC, BP, SP, stack, RF);  
-        			break;
+				break;
         
 			/// GTR
 			case 22:
-        			if (RF[IR.l] > RF[IR.m])
-          				RF[IR.r] = 1; 
-        			else 
-          				RF[IR.r] = 0; 
+				if (RF[IR.l] > RF[IR.m])
+				  RF[IR.r] = 1; 
+				else 
+				  RF[IR.r] = 0; 
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[22 - 1], IR, PC, BP, SP, stack, RF);             
-        			break;
+				break;
         
 			/// GEQ
 			case 23:
-        			if (RF[IR.l] >= RF[IR.m])
-          				RF[IR.r] = 1; 
-        			else 
-          				RF[IR.r] = 0; 
+				if (RF[IR.l] >= RF[IR.m])
+				  RF[IR.r] = 1; 
+				else 
+				  RF[IR.r] = 0; 
           
 				if (printFlag)
 					print_execution(PC - 1, opnames[23 - 1], IR, PC, BP, SP, stack, RF); 
-        			break;
+				break;
+
 		}
 	}
 }
